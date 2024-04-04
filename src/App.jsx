@@ -45,6 +45,7 @@ function App() {
                               currencyOptions={options}
                               onCurrencyChange={(currency) => setAmount(amount)}
                               selectCurrenc={from}
+                              onAmountChange={(amount)=> setAmount(amount)}
                           />
                       </div>
                       <div className="relative w-full h-0.5">
