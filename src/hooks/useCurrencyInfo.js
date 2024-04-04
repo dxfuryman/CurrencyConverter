@@ -1,15 +1,16 @@
-import {useEffect, useState} from "react";
-import {data} from "autoprefixer";
+import { useEffect, useState } from "react";
 
-function useCurrencyInfo() {
-    const [data,setdata] = useState({})
+function useCurrencyInfo(currency) { // Add 'currency' as a parameter
+    const [data, setData] = useState({});
+
     useEffect(() => {
-        fetch('https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json')
-            .then((responce) => responce.json())
-            .then((responce) => setdata(responce[currency]))
-            console.log(data);
-    }, [currency])
-    console.log(data);
+        fetch(`https://v6.exchangerate-api.com/v6/159a6de520cf995272ee6c08/latest/${currency}`)
+            .then((response) => response.json())
+            .then((responseData) => setData(responseData.conversion_rates));
+        // console.log(data); No need to log here anymore
+    }, [currency]); // Add 'currency' to the dependency array
+
+    // console.log(data); No need to log here anymore
     return data;
 }
 
